@@ -31,10 +31,13 @@ function initializeApp() {
         const taskItem = document.createElement('li');
         taskItem.textContent = taskText;
 
+        // Add a class to the task item for styling
+        taskItem.classList.add('task-item');
+
         // Create a "Remove" button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn';
+        removeButton.classList.add('remove-btn'); // Add a class for styling
 
         // Add an event listener to the "Remove" button
         removeButton.addEventListener('click', () => {
