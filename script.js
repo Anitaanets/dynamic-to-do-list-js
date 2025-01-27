@@ -8,6 +8,9 @@ function initializeApp() {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
+    // Load tasks when the application starts
+    loadTasks();
+
     // Attach event listeners
     addButton.addEventListener('click', addTask);
     taskInput.addEventListener('keypress', (event) => {
@@ -52,5 +55,39 @@ function initializeApp() {
 
         // Clear the input field
         taskInput.value = '';
+    }
+
+    // Function to load tasks when the application starts
+    function loadTasks() {
+        // Clear the task list initially
+        taskList.innerHTML = '';
+
+        // Example: Preloaded tasks (these can be fetched from an API or local storage)
+        const tasks = ['Sample Task 1', 'Sample Task 2', 'Sample Task 3'];
+
+        tasks.forEach((taskText) => {
+            // Create a new list item (li) for each task
+            const taskItem = document.createElement('li');
+            taskItem.textContent = taskText;
+
+            // Add a class to the task item for styling
+            taskItem.classList.add('task-item');
+
+            // Create a "Remove" button
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.classList.add('remove-btn'); // Add a class for styling
+
+            // Add an event listener to the "Remove" button
+            removeButton.addEventListener('click', () => {
+                taskList.removeChild(taskItem);
+            });
+
+            // Append the "Remove" button to the list item
+            taskItem.appendChild(removeButton);
+
+            // Append the list item to the task list
+            taskList.appendChild(taskItem);
+        });
     }
 }
